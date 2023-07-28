@@ -1,0 +1,31 @@
+server:
+  port: 8282
+
+spring:
+  application:
+    name: "product-service"
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/consul
+    username: root
+    password: root
+    jpa:
+      hibernate.ddl-auto: create
+      generate-ddl: true
+      show-sql: true
+
+
+      discovery:
+        prefer-ip-address: true
+        health-check-path: ${server.servlet.context-path:}/actuator/health
+        health-check-interval: 15s
+        health-check-timeout: 90s
+        health-check-critical-timeout: 3m
+        instanceId: ${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}
+
+
