@@ -29,6 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee createEmployee(Employee Employee) {
+
         return employeeRepo.save(Employee);
     }
 
@@ -40,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         updateEmployee.setFirstName(Employee.getFirstName());
         updateEmployee.setLastName(Employee.getLastName());
         updateEmployee.setEmailId(Employee.getEmailId());
-        updateEmployee.setBirthdate(Employee.getBirthdate());
+        //updateEmployee.setBirthdate(Employee.getBirthdate());
         employeeRepo.save(updateEmployee);
         return Employee;
     }

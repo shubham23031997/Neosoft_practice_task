@@ -27,7 +27,7 @@ public class Employee {
 	@Column(name = "email_id")
 	private String emailId;
 
-	@Column(name = "birthdate")
-	private Date birthdate;
+//	@Column(name = "birthdate")
+//	private Date birthdate;
 
 }
