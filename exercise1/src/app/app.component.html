@@ -1,0 +1,39 @@
+<h2>Parent</h2>
+<div class="row">
+  <div class="col parentBox">
+    <h2>User</h2>
+    <table width="100%">
+      <tr>
+        <th>User Name:</th>
+        <th class="removeLink">Remove</th>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>{{ user }}</td>
+        <td class="removeLink">Remove</td>
+      </tr>
+    </table>
+  </div>
+  <div class="col parentBox">
+    <h2>Admin</h2>
+    <table width="100%">
+      <tr>
+        <th>User Name:</th>
+        <th class="removeLink">Remove</th>
+      </tr>
+      <tr>
+        <td>admin</td>
+        <td class="removeLink">Remove</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<h2>Child</h2>
+<hr />
+<div class="row">
+  <app-child [boxColor]="'red'" [placeholderText]="'Create User'"></app-child>
+
+  <app-child
+    [boxColor]="'green'"
+    [placeholderText]="'Create admin'"
+  ></app-child>
+</div>

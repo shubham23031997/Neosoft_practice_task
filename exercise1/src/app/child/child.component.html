@@ -1,0 +1,13 @@
+<div
+  class="box"
+  [ngClass]="{ boxRed: boxColor == 'red', boxGreen: boxColor == 'green' }"
+>
+  <input type="text" #myInput placeholder="{{ placeholderText }}" />
+  <!-- to get value form input we use refernce variable .. for that refernce variable is starts with #   -->
+  <button (click)="onCreate(myInput)">Create</button>
+  <div class="count" *ngIf="count">
+    <!-- here *ngIf is used for if count is not null or not empty then only it shows this div -->
+    Total Count: <strong>{{ count }}</strong>
+    <!-- strong tag is used for display number/text in bold  -->
+  </div>
+</div>
