@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CreateEmployeeComponent implements OnInit {
   employee: Employee = new Employee();
+  datePipe: any;
   constructor(
     private employeeService: EmployeeService,
     private router: Router
@@ -31,4 +32,8 @@ export class CreateEmployeeComponent implements OnInit {
     console.log(this.employee);
     this.saveEmployee();
   }
+  // formattedDate(date: string): string {
+  //   const parsedDate = new Date(date);
+  //   return this.datePipe.transform(parsedDate, 'MM-dd-yyyy') || '';
+  // }
 }
