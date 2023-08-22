@@ -22,22 +22,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private RestTemplate restTemplate;
-
     @Autowired
     private ContactService contactService;
 
     @GetMapping("/{userId}")
     public User getUser(@PathVariable("userId") Long userId) {
-
         User user = this.userService.getUser(userId);
-        //http://localhost:8999/contact/user/1311
-        //this is link for service call through api gateway
-
-        // List contacts = this.restTemplate.getForObject("http://contact-service/contact/user/" + user.getUserId(), List.class);
         System.out.println("user with id " + userId + user.getName());
-        List contacts = contactService.getContacts(user.getUserId());
+        List contacts = userService.getContactsFromContactService(user.getUserId());
+        log.info("contactList {} ::", contacts);
         user.setContacts(contacts);
         return user;
     }

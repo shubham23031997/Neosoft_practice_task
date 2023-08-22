@@ -10,6 +10,6 @@ import java.util.List;
 @FeignClient(name = "CONTACT-SERVICE")
 public interface ContactService {
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/contact/user/{userId}")
     List<Contact> getContacts(@PathVariable("userId") Long userId);
 }

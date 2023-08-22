@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 @Service
 public class ContactServiceImpl implements ContactService {
 
-    //fake list of contacts
-
     List<Contact> list = List.of(
             new Contact(1L, "anuj@gmail.com", "anuj", 1311L),
             new Contact(2L, "yusuf@gmail.com", "yusuf", 1311L),
@@ -24,7 +22,6 @@ public class ContactServiceImpl implements ContactService {
             new Contact(10L, "anchal@gmail.com", "anchal", 1315L),
             new Contact(11L, "kajal@gmail.com", "kajal", 1316L)
     );
-
 
     @Override
     public List<Contact> getContactsOfUser(Long userId) {
