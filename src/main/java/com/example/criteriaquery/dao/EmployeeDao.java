@@ -53,6 +53,7 @@ public class EmployeeDao {
             throw new RuntimeException(e);
         }
     }
+
     public List<Employee> getEmpSalaryGreaterThanOrEqual8000() {
         try {
             return HibernateConfiguration.getSessionFactory().openSession().createCriteria(Employee.class).
@@ -62,10 +63,11 @@ public class EmployeeDao {
             throw new RuntimeException(e);
         }
     }
+
     public List<Employee> findEmployeeNameStartsWith() {
         try {
             return HibernateConfiguration.getSessionFactory().openSession().createCriteria(Employee.class)
-                    .add(Restrictions.ilike("name", "Ana%")).list();
+                    .add(Restrictions.ilike("name", "Anu%")).list();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

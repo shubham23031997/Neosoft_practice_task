@@ -36,6 +36,7 @@ public class EmployeeService {
     public List<Employee> getEmpSalaryLessThan20000() {
         return employeeDao.getEmpSalaryLessThan20000();
     }
+
     public List<Employee> getEmpSalaryGreaterThanOrEqual8000() {
         return employeeDao.getEmpSalaryGreaterThanOrEqual8000();
     }
