@@ -2,13 +2,17 @@ package com.neosoft.hibernatetemplate.controller;
 
 import com.neosoft.hibernatetemplate.model.Person;
 import com.neosoft.hibernatetemplate.service.PersonService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Slf4j
 @RequestMapping("/persons")
+@EnableTransactionManagement
 public class PersonController {
 
     @Autowired
@@ -34,6 +38,7 @@ public class PersonController {
     }
 
     @PutMapping("/{personId}")
+
     public ResponseEntity<Person> updatePerson(@PathVariable Long personId, @RequestBody Person person) {
         Person existingPerson = personService.getPersonById(personId);
         if (existingPerson != null) {
@@ -41,16 +46,17 @@ public class PersonController {
             existingPerson.setEmail(person.getEmail());
             Person updatePerson = personService.updatePerson(existingPerson);
 
-            return ResponseEntity.ok(existingPerson);
+            return ResponseEntity.ok(updatePerson);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @DeleteMapping("/{userId}")
+    @DeleteMapping("/{personId}")
     public ResponseEntity<Void> deletePerson(@PathVariable Long personId) {
         personService.deletePerson(personId);
         return ResponseEntity.noContent().build();
+
     }
 
 }

@@ -2,6 +2,7 @@ package com.neosoft.hibernatetemplate.service;
 
 import com.neosoft.hibernatetemplate.model.Person;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,10 @@ public class PersonService {
     public Person updatePerson(Person person) {
         log.info("person name {}", person.getEmail());
         try {
-            hibernateTemplate.persist(person);
+            Transaction transaction = hibernateTemplate.getSessionFactory().getCurrentSession().beginTransaction();
+            hibernateTemplate.saveOrUpdate(person);
+            transaction.commit();
+            log.info("person to be save{}", person.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -38,7 +42,9 @@ public class PersonService {
     public void deletePerson(Long personId) {
         Person person = hibernateTemplate.get(Person.class, personId);
         if (person != null) {
+            Transaction transaction = hibernateTemplate.getSessionFactory().getCurrentSession().beginTransaction();
             hibernateTemplate.delete(person);
+            transaction.commit();
         }
     }
 }
