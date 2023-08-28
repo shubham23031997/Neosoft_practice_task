@@ -1,0 +1,27 @@
+server:
+  port: 8383
+
+spring:
+  application:
+    name: "API-GATEWAY"
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+
+    gateway:
+      httpclient:
+      routes:
+        - id: Authentication service
+          uri: lb://Authentication-Service
+          predicates:
+            - Path=/auth/**
+
+#        - id: product-service
+#          uri: lb://product-service
+#          predicates:
+#            - Path=/shopproducts/**
+#          filters:
+#            -AuthenticationFilter
+
+# here filters: is required for before accessing services through api we applied security
