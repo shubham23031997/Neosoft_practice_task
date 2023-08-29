@@ -17,11 +17,18 @@ spring:
           predicates:
             - Path=/auth/**
 
-#        - id: product-service
-#          uri: lb://product-service
-#          predicates:
-#            - Path=/shopproducts/**
-#          filters:
-#            -AuthenticationFilter
+        - id: swiggy-app
+          uri: lb://SWIGGY-APP
+          predicates:
+            - Path=/swiggy/**
+          filters:
+            - name: AuthenticationFilter
+
+        - id: restaurant-service
+          uri: lb://RESTAURANT-SERVICE
+          predicates:
+            - Path=/restaurant/**
+          filters:
+            - name: AuthenticationFilter
 
 # here filters: is required for before accessing services through api we applied security

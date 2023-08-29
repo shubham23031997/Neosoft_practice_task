@@ -38,7 +38,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                 }
                 try {
 //                    REST call to AUTH service
-//                    template.getForObject("http://Authentication-Service//validate?token" + authHeader, String.class);//authHeader is token here
+                    //   template.getForObject("http://Authentication-Service//validate?token" + authHeader, String.class);//authHeader is token here
                     jwtUtil.validateToken(authHeader);
 
                 } catch (Exception e) {
