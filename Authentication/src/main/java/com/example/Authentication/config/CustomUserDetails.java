@@ -1,14 +1,18 @@
 package com.example.Authentication.config;
 
 import com.example.Authentication.entity.UserCredential;
+import org.apache.catalina.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.List;
 
 @Component
 public class CustomUserDetails implements UserDetails {
+    UserCredential userCredential=new UserCredential();
     private String name;
     private String password;
 
@@ -19,7 +23,8 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        SimpleGrantedAuthority simpleGrantedAuthority=new SimpleGrantedAuthority(userCredential.getRole());
+        return List.of(simpleGrantedAuthority);
     }
 
     @Override

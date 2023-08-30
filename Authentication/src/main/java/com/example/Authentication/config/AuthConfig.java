@@ -30,8 +30,9 @@ public class AuthConfig {
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/auth/register", "/auth/token", "/auth/validate", "/actuator/health", "/swagger-ui/**",
-                                        "/swagger-resources/*",
-                                        "/v3/api-docs/**").permitAll()
+                                        "/swagger-resources/**", "/v3/api-docs/**").permitAll()
+                                .requestMatchers("/secure-endpoint").hasRole("USER") // Define role-based access here
+                                .requestMatchers("/admin-endpoint").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 );
 

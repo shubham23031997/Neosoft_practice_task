@@ -1,5 +1,14 @@
 server:
   port: 8383
+#  ssl:
+#    enabled: true
+#    key-store: classpath:apigateway.p12
+#    key-store-password: password
+#    key-store-type: PKCS12
+#    key-alias: apigateway
+#    trust-store: classpath:apigateway.p12
+#    trust-store-type: PKCS12
+#    trust-store-password: password
 
 spring:
   application:
