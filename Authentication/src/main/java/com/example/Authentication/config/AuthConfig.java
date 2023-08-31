@@ -31,10 +31,10 @@ public class AuthConfig {
                         authorizeRequests
                                 .requestMatchers("/auth/register", "/auth/token", "/auth/validate", "/actuator/health", "/swagger-ui/**",
                                         "/swagger-resources/**", "/v3/api-docs/**").permitAll()
-                                .requestMatchers("/secure-endpoint").hasRole("USER") // Define role-based access here
-                                .requestMatchers("/admin-endpoint").hasRole("ADMIN")
+                                .requestMatchers("/restaurant/greet").hasRole("USER") // Define role-based access here
+                                .requestMatchers("/swiggy/home").hasRole("ADMIN")
                                 .anyRequest().authenticated()
-                );
+                ).authenticationProvider(authenticationProvider());
 
         return http.build();
     }

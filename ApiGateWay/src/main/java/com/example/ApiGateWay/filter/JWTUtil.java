@@ -8,6 +8,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
+import java.util.List;
 
 @Component
 public class JWTUtil {
@@ -16,19 +17,35 @@ public class JWTUtil {
 
     // This method retrieves the signing key from the secret.
     private Key getSignKey() {
-        // Decode the secret key from base64 encoding into bytes.
         byte[] keyByte = Decoders.BASE64.decode(SECRET);
-        // Create and return a signing key using the decoded bytes.
         return Keys.hmacShaKeyFor(keyByte);
     }
 
-    public void validateToken(final String token) {
-        // Parse the token using the provided secret key.
-        Jws<Claims> claimsJws = Jwts.parserBuilder()
-                .setSigningKey(getSignKey()) // Set the signing key to verify the token's signature.
-                .build()
-                .parseClaimsJws(token); // Parse the token and obtain its claims.
+    public String validateToken(final String token) {
+//        // Parse the token using the provided secret key.
+//        Jws<Claims> claimsJws = Jwts.parserBuilder()
+//                .setSigningKey(getSignKey()) // Set the signing key to verify the token's signature.
+//                .build()
+//                .parseClaimsJws(token); // Parse the token and obtain its claims.
         // Note: If the token is invalid or expired, it will throw an exception.
+
+        try {
+            Jws<Claims> claimsJws = Jwts.parserBuilder()
+                    .setSigningKey(getSignKey())
+                    .build()
+                    .parseClaimsJws(token);
+
+            // Extract the roles claim from the token's claims
+            List<String> roles = claimsJws.getBody().get("roles", List.class);
+
+            if (roles != null && !roles.isEmpty()) {
+                return roles.get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
+
 }
 

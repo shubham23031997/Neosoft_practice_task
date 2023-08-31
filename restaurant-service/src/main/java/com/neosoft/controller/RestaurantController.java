@@ -15,7 +15,7 @@ public class RestaurantController {
     @Autowired
     private RestaurantService service;
 
-    @GetMapping("/")
+    @GetMapping("/greet")
     public String greetingMessage() {
         return service.greeting();
     }

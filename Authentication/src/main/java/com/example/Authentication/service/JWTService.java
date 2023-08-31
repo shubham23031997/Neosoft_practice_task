@@ -29,10 +29,8 @@ public class JWTService {
     // This method is used to validate and parse a JWT token.
     public void validateToken(final String token) {
         // Parse the token using the provided secret key.
-        Jws<Claims> claimsJws = Jwts.parserBuilder()
-                .setSigningKey(getSignKey()) // Set the signing key to verify the token's signature.
-                .build()
-                .parseClaimsJws(token); // Parse the token and obtain its claims.
+        Jws<Claims> claimsJws = Jwts.parserBuilder().setSigningKey(getSignKey()) // Set the signing key to verify the token's signature.
+                .build().parseClaimsJws(token); // Parse the token and obtain its claims.
         // Note: If the token is invalid or expired, it will throw an exception.
     }
 
@@ -47,14 +45,11 @@ public class JWTService {
     // This method creates a JWT token.
     private String createToken(Map<String, Object> claims, String userName) {
         // Build a JWT token with the specified claims.
-        return Jwts.builder()
-                .setClaims(claims) // Set the claims (payload) for the token.
+        return Jwts.builder().setClaims(claims) // Set the claims (payload) for the token.
                 .setSubject(userName) // Set the subject (typically the username) of the token.
                 .setIssuedAt(new Date(System.currentTimeMillis())) // Set the token's issuance date.
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30)) // Set token expiration (30 minutes from now).
                 .signWith(getSignKey(), SignatureAlgorithm.HS256) // Sign the token using the signing key.
                 .compact(); // Compact the token into a string representation.
     }
-
 }
-
