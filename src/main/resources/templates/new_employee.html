@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -30,4 +31,30 @@
 </div>
 </body>
 
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Employee Management System</title>
+</head>
+
+<body>
+<div align="center">
+    <h1>Employee Management System</h1>
+    <hr>
+    <h2>Save Employee</h2>
+
+    <form action="#" method="POST" th:action="@{/saveEmployee}" th:object="${employee}">
+        <input placeholder="Employee First Name" th:field="*{firstName}" type="text">
+        <input placeholder="Employee Last Name" th:field="*{lastName}" type="text">
+        <input placeholder="Employee Email" th:field="*{email}" type="text">
+        <button type="submit"> Save Employee</button>
+    </form>
+    <hr>
+    <a th:href="@{/}"> Back to Employee List</a>
+</div>
+</body>
 </html>
