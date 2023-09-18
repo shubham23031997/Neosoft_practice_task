@@ -2,12 +2,20 @@ package com.neosoft.MapStruct.mapper;
 
 import com.neosoft.MapStruct.dto.ProductDto;
 import com.neosoft.MapStruct.model.Product;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Mapper
+import java.util.List;
+
+@Mapper(componentModel = "spring")
 public interface ProductMapper {
-    ProductDto modelToDto(Product product);
-    Product DtoToModel(ProductDto productDto);
+    @Mapping(source = "name", target = "desc")
+    ProductDto toDto(final Product product);
 
 
+    List<ProductDto> toDtos(final List<Product> products);
+
+    @InheritInverseConfiguration
+    Product productDtoToProduct( final ProductDto productDto);
 }

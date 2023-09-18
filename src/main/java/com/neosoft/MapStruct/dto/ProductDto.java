@@ -1,15 +1,15 @@
 package com.neosoft.MapStruct.dto;
 
-import jakarta.persistence.Id;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class ProductDto {
-        @Id
-        private int id;
-        private String name;
-        private int quantity;
-        private long price;
+
+    private int id;
+    private String desc;
+    private String price;
+    private String quantity;
 }
