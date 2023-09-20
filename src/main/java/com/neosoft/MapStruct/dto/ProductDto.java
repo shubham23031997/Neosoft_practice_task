@@ -1,6 +1,5 @@
 package com.neosoft.MapStruct.dto;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +8,10 @@ import lombok.Setter;
 public class ProductDto {
 
     private int id;
-    private String desc;
+    private String name;
     private String price;
-    private String quantity;
+    private String quantity;//here we can change datatype from int to string
+    private String description;
+//    private String itemId;
+//    private List<Item> itemsList;
 }

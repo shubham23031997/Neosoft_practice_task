@@ -21,24 +21,23 @@ public class ProductController {
     @PostMapping("/products")
     public ResponseEntity<Product> create(@RequestBody ProductDto productDto) {
         return new ResponseEntity<>(productRepository.save(
-                productMapper.productDtoToProduct(productDto)), HttpStatus.CREATED);
+                productMapper.dtoToModel(productDto)), HttpStatus.CREATED);
     }
 
     @GetMapping("/products")
     public ResponseEntity<List<ProductDto>> findAll() {
-        return new ResponseEntity<>(productMapper.toDtos(
-                productRepository.findAll()), HttpStatus.OK);
+        return new ResponseEntity<>(productMapper.modelsToDtos(productRepository.findAll()), HttpStatus.OK);
     }
 
     @GetMapping("/products/{id}")
     public ResponseEntity<ProductDto> getById(@PathVariable(value = "id") int id) {
-        return new ResponseEntity<>(productMapper.toDto(
+        return new ResponseEntity<>(productMapper.modelToDto(
                 productRepository.findById(id).get()), HttpStatus.OK);
     }
 
     @DeleteMapping("/products/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable(value = "id") int id) {
-        ProductDto productDto = productMapper.toDto(productRepository.findById(id).get());
+        ProductDto productDto = productMapper.modelToDto(productRepository.findById(id).get());
         productRepository.deleteById(productDto.getId());
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
