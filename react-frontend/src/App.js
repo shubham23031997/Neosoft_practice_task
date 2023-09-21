@@ -1,6 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+//its root component
+//react team recomended to use jsx becz its easy and clean
 function App() {
   return (
     <div className="App">
