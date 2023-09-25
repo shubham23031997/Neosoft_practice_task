@@ -1,24 +1,25 @@
-import logo from "./logo.svg";
 import "./App.css";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import ListEmployeeComponent from "./component/ListEmployeeComponent";
+import HeaderComponent from "./component/HeaderComponent";
+import FooterComponent from "./component/FooterComponent";
 //its root component
 //react team recomended to use jsx becz its easy and clean
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <div className="container">
+          <HeaderComponent />
+
+          <div className="container">
+            <ListEmployeeComponent></ListEmployeeComponent>
+          </div>
+
+          <FooterComponent />
+        </div>
+      </Router>
     </div>
   );
 }
