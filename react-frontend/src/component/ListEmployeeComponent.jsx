@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import EmployeeService from "../service/EmployeeService";
-// import React from "react";
+import { Link } from "react-router-dom";
 
 export default class ListEmployeeComponent extends Component {
   constructor(props) {
@@ -20,7 +20,12 @@ export default class ListEmployeeComponent extends Component {
   render() {
     return (
       <div>
-        <h2 className="text-center">Employees List</h2>
+        <h2 className="text-center"> Employee List</h2>
+        <div className="row">
+          <Link to="/add-employee" className="btn btn-primary">
+            Add Employee
+          </Link>
+        </div>
         <div className="row">
           <table className="table table-striped table-bordered">
             <thead>
@@ -46,4 +51,3 @@ export default class ListEmployeeComponent extends Component {
     );
   }
 }
-// export default ListEmployeeComponent;

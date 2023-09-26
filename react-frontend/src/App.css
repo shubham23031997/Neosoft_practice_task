@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+/* .footer {
+  position: absolute;
+  bottom: 0;
+ 
+  background-color: black;
+  
+  color: white;
+} */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  background-color: #333; /* Set the background color to any desired color */
+  text-align: center; /* Center-align text */
+  color: white; /* Make text white */
+}
+
+.footer-title {
+  /* Additional styling for the header title, if needed */
+  font-size: 24px;
+  /* Add any other styles you want for the title */
+}
+.header {
+  position: absolute;
+
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  background-color: #333; /* Set the background color to any desired color */
+  text-align: center; /* Center-align text */
+  color: white;
+}
+
+.header-title {
+  /* Additional styling for the header title, if needed */
+  font-size: 24px;
+  /* Add any other styles you want for the title */
+}
