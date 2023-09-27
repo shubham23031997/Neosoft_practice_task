@@ -8,8 +8,17 @@ export default class ListEmployeeComponent extends Component {
     this.state = {
       employees: [],
     };
+    this.deleteEmployee = this.deleteEmployee.bind(this);
   }
-
+  deleteEmployee(id) {
+    EmployeeService.deleteEmployee(id).then((res) => {
+      this.setState({
+        employees: this.state.employees.filter(
+          (employee) => employee.id !== id
+        ),
+      });
+    });
+  }
   //here for autowiring of service we need below
   componentDidMount() {
     EmployeeService.getEmployees().then((res) => {
@@ -42,6 +51,21 @@ export default class ListEmployeeComponent extends Component {
                   <td>{employee.firstName}</td>
                   <td>{employee.lastName}</td>
                   <td>{employee.emailId}</td>
+                  <td>
+                    <Link
+                      to={`/update-employee/${employee.id}`}
+                      className="btn btn-info"
+                    >
+                      Update
+                    </Link>
+
+                    <Link
+                      onClick={() => this.deleteEmployee(employee.id)}
+                      className="btn btn-danger"
+                    >
+                      Delete
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>

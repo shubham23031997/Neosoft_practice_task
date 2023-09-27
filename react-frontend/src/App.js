@@ -23,7 +23,7 @@ function App() {
               element={<CreateEmployeeComponent />}
             ></Route>
             <Route
-              path="/update-employee/:id}"
+              path="/update-employee/:id"
               element={<UpdateEmployeeComponent />}
             ></Route>
           </Routes>
