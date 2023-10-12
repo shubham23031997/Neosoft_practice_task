@@ -12,4 +12,5 @@ public class RabbitMQConsumer {
     public void consume(String message) {
         log.info(String.format("message consume by rabbitmq consumer", message));
     }
+
 }

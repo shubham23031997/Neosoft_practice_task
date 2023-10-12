@@ -30,6 +30,7 @@ public class RabbitMQConfig {
 
     @Value("${rabbitmq.jsonRoutingKey.name}")
     private String jsonRoutingKey;
+
     //spring bean for Rabbitmq queue
     @Bean
     public Queue queue() {
@@ -40,6 +41,7 @@ public class RabbitMQConfig {
     public Queue jsonQueue() {
         return new Queue("shubham_json");
     }
+
     @Bean
     public TopicExchange topicExchange() {
         return new TopicExchange("shubham_exchange");
@@ -61,17 +63,17 @@ public class RabbitMQConfig {
                 .bind(jsonQueue())
                 .to(topicExchange())
                 .with("shubham_jsonRouting_key");
-
     }
 
     @Bean
-    public MessageConverter converter(){
+    public MessageConverter converter() {
         return new Jackson2JsonMessageConverter();
     }
 
+    //  this use for java object into json and json into java object
     @Bean
-    public AmqpTemplate amqpTemplate(ConnectionFactory connectionFactory){
-        RabbitTemplate rabbitTemplate=new RabbitTemplate(connectionFactory);
+    public AmqpTemplate amqpTemplate(ConnectionFactory connectionFactory) {
+        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(converter());
         return rabbitTemplate;
     }
