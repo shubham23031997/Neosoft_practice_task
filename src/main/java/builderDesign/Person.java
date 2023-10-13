@@ -9,9 +9,10 @@ public class Person {
     private int age;
 
     // Constructor is made private to enforce the use of the builder.
-    private Person() {}
+    private Person() {
+    }
 
-       public static class Builder {
+    public static class Builder {
         private final Person person = new Person();
 
         public Builder firstName(String firstName) {
