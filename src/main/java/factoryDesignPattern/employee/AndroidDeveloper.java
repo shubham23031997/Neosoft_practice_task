@@ -1,6 +1,6 @@
 package factoryDesignPattern.employee;
 
-public class AndroidDeveloper implements Employee{
+public class AndroidDeveloper implements Employee {
 
     @Override
     public int salary() {

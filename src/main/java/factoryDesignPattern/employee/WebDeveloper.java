@@ -1,6 +1,6 @@
 package factoryDesignPattern.employee;
 
-public class WebDeveloper implements Employee{
+public class WebDeveloper implements Employee {
 
     @Override
     public int salary() {

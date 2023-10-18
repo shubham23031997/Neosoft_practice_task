@@ -1,7 +1,6 @@
 package factoryDesignPattern;
 
 
-
 abstract class Vehicle {
     public abstract int getWheel();
 
