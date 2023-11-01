@@ -14,7 +14,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class ProductResponse {
     private String id;
-    public String name;
-    public String description;
+    private String name;
+    private String description;
     private BigDecimal price;
+    // here big decimal in mongo converts to string datatype
 }
