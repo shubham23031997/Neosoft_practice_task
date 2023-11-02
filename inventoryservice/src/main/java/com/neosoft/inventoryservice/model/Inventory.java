@@ -1,18 +1,20 @@
-package com.neosoft.orderservice.dto;
+package com.neosoft.inventoryservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class OrderLineItemsDto {
+@Entity
+@Table(name = "inventory")
+public class Inventory {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String skuCode;
-    private BigDecimal price;
     private Integer quantity;
 }

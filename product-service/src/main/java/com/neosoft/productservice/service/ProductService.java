@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ProductService {
 
-//    @Autowired//here if we write final then we need constructor to initialized
+    //    @Autowired//here if we write final then we need constructor to initialized
     private final ProductRepository productRepository;
 
 //    public ProductService(ProductRepository productRepository) {
@@ -29,13 +29,13 @@ public class ProductService {
                 .description(productRequest.getDescription())
                 .price(productRequest.getPrice()).build();
         productRepository.save(product);
-        log.info("product {} is saved",product.getId());
+        log.info("product {} is saved", product.getId());
 
     }
 
     public List<ProductResponse> getAllProducts() {
-        List<Product> products=productRepository.findAll();
-        return products.stream().map(product ->mapToProductResponse(product)).collect(Collectors.toList());
+        List<Product> products = productRepository.findAll();
+        return products.stream().map(product -> mapToProductResponse(product)).collect(Collectors.toList());
 //        return products.stream().map(this::mapToProductResponse).toList();
 
     }
@@ -46,6 +46,6 @@ public class ProductService {
                 .name(product.getName())
                 .description(product.getDescription())
                 .price(product.getPrice())
-        .build() ;
+                .build();
     }
 }

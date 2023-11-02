@@ -8,9 +8,8 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Data
 public class OrderRequest {
+    //private List<OrderLineItemsDto> orderLineItemsDtosList;
    private List<OrderLineItemsDto> orderLineItemsDtosList;
-
 }
