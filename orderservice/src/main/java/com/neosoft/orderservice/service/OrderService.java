@@ -1,5 +1,6 @@
 package com.neosoft.orderservice.service;
 
+import com.neosoft.orderservice.dto.InventoryResponse;
 import com.neosoft.orderservice.dto.OrderLineItemsDto;
 import com.neosoft.orderservice.dto.OrderRequest;
 import com.neosoft.orderservice.model.Order;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,14 +37,21 @@ public class OrderService {
                 //.map(this::mapToDto)
                 .map(orderLineItemsDto -> mapToDto(orderLineItemsDto))
                 .toList();
+
         order.setOrderLineItemsList(orderLineItems);
+        List<String> skuCodes =order.getOrderLineItemsList().stream().map(orderLineItems1 ->orderLineItems1.getSkuCode()).toList();
+
         //call inventory service for placing creating order if product is in stock
-        Boolean result = webClient
-                .get().uri("http://localhost:8082/api/inventory")
+        InventoryResponse[] inventoryResponseArray = webClient.get()
+                .uri("http://inventory-service/api/inventory"
+                        ,uriBuilder -> uriBuilder.queryParam("skuCode",skuCodes).build())
                 .retrieve()
-                .bodyToMono(Boolean.class).block();
+                .bodyToMono(InventoryResponse[].class).block();
+
+        boolean allProductsInStock = Arrays.stream(inventoryResponseArray)
+                .allMatch(inventoryResponse -> inventoryResponse.isInStock());
         //now web client make synchronous request
-        if (result) {
+        if (allProductsInStock) {
             orderRepository.save(order);
         } else {
             throw new IllegalArgumentException("product is not in stock, please try again later");
