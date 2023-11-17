@@ -39,12 +39,12 @@ public class OrderService {
                 .toList();
 
         order.setOrderLineItemsList(orderLineItems);
-        List<String> skuCodes =order.getOrderLineItemsList().stream().map(orderLineItems1 ->orderLineItems1.getSkuCode()).toList();
+        List<String> skuCodes = order.getOrderLineItemsList().stream().map(orderLineItems1 -> orderLineItems1.getSkuCode()).toList();
 
         //call inventory service for placing creating order if product is in stock
         InventoryResponse[] inventoryResponseArray = webClientBuilder.build().get()
                 .uri("http://inventory-service/api/inventory"
-                        ,uriBuilder -> uriBuilder.queryParam("skuCode",skuCodes).build())
+                        , uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
                 .retrieve()
                 .bodyToMono(InventoryResponse[].class).block();
 

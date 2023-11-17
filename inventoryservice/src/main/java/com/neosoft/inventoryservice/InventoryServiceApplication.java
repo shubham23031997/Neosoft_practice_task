@@ -12,22 +12,23 @@ import org.springframework.context.annotation.Bean;
 @EnableEurekaClient
 public class InventoryServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(InventoryServiceApplication.class, args);
-	}
-	@Bean//try to load data at time of application starts
-	public CommandLineRunner loadData(InventoryRepository inventoryRepository){
-		return args -> {
-			Inventory inventory=new Inventory();
-			inventory.setSkuCode("kachori");
-			inventory.setQuantity(100);
+    public static void main(String[] args) {
+        SpringApplication.run(InventoryServiceApplication.class, args);
+    }
 
-			Inventory inventory1=new Inventory();
-			inventory1.setSkuCode("samasa");
-			inventory1.setQuantity(200);
+    @Bean//try to load data at time of application starts
+    public CommandLineRunner loadData(InventoryRepository inventoryRepository) {
+        return args -> {
+            Inventory inventory = new Inventory();
+            inventory.setSkuCode("kachori");
+            inventory.setQuantity(100);
 
-			inventoryRepository.save(inventory);
-			inventoryRepository.save(inventory1);
-		};
-	}
+            Inventory inventory1 = new Inventory();
+            inventory1.setSkuCode("samasa");
+            inventory1.setQuantity(200);
+
+            inventoryRepository.save(inventory);
+            inventoryRepository.save(inventory1);
+        };
+    }
 }
