@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 public class OrderLineItemsDto {
     private Long id;
     private String skuCode;

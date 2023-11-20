@@ -7,13 +7,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "order_line_items")
-@Builder
 @Data
 @Entity
+@Table(name = "order_line_items")
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderLineItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +19,6 @@ public class OrderLineItems {
     private String skuCode;
     private BigDecimal price;
     private Integer quantity;
+
+
 }

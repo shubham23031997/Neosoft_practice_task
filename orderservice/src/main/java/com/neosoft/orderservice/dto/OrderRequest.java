@@ -10,6 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class OrderRequest {
-    //private List<OrderLineItemsDto> orderLineItemsDtosList;
+    //private List<OrderLineItemsDto> orderLineItemsDtoList;
     private List<OrderLineItemsDto> orderLineItemsDtosList;
 }
