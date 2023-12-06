@@ -1,13 +1,27 @@
+<!-- Interpolation: Displaying the value of 'title' from AppComponent -->
+<h1>Welcome to {{ title }}</h1>
 
-<h1>welcome to {{ title }} </h1>
-<!-- <p>here we render title from app component ts ,here app component ts is acts as application properties and {{}} is acts as vallue anotation</p> -->
+<!-- Comments: HTML comments in Angular templates -->
 <p>here</p>
+<!-- Binding data: Displaying the value of 'count' from AppComponent -->
 <p>Count: {{ count }}</p>
+<!-- Event binding: Increment 'count' on button click -->
 <button (click)="increaseCount()">Increase Count</button>
+<!-- Property binding: Disabling the button based on 'isDisabled' from AppComponent -->
 <button [disabled]="isDisabled">Disabled Button</button>
+
+<!-- Conditional rendering with *ngIf -->
 <div *ngIf="isLoggedIn">
   <p>Welcome, User!</p>
 </div>
 <div *ngIf="!isLoggedIn">
   <p>Please log in to continue.</p>
 </div>
+
+<!-- Looping through 'items' array using *ngFor -->
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>
+
+<!-- Custom component usage: Rendering the AppContainerComponent -->
+

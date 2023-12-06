@@ -12,10 +12,10 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'angular-app';
   count: number = 0;
-
+  items: string[] = ['Apple', 'Banana', 'Orange'];
   increaseCount() {
     this.count++;
   }
   isDisabled: boolean = true;
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean = true;
 }
