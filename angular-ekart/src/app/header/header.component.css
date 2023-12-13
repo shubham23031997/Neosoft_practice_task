@@ -19,13 +19,7 @@
     padding: 1vh 2vh;
     font-size: 10px;
 }
-.ekart--top--bar{
-    width:auto;
-    text-align: right;
-    padding-top: 3px;
-    padding-bottom: 15px;
-    padding-right: 30px;
-}
+
 .ekart-menu{
     padding-top: 2vh;
     padding: 1vh 1vh;
@@ -49,11 +43,7 @@
     background-color: #efefef;
     padding: 2px 10px;
 }
-a{
-    text-decoration: none;   
-    padding: 0 10px; 
-    color: #28282B;
-}
+
 .ekart--search--btn{
     width: 33px;
     height: 33px;
